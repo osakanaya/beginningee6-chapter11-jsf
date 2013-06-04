@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- 
+	テンプレートを使用した書籍情報登録ページのサンプル。
+	
+	テンプレートの使用により、大まかなページのデザインを
+	テンプレートに委ね、テンプレートを使用する側である
+	このページではテンプレートのui:insertタグで定義された
+	埋め込み箇所に挿入するページ内容の指定に専念できる
+	ようになっている。
+
+	テンプレートのui:insertタグで定義された埋め込み箇所への
+	ページ内容の挿入は、ui:defineタグにより行う。
+	（name属性の値で挿入するものと挿入される箇所が関連付け
+	られる。）	
+	
+	明示的にページ内容の埋め込みを指定しなかった場合、
+	テンプレート側で定義されたページ内容がデフォルトとして
+	使用される。
+ -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xml:lang="en" lang="en">
+
+<!-- layout.xhtmlのテンプレートを使用するように指定 -->
+<ui:composition template="layout.xhtml">
+
+	<!-- 
+		テンプレートで名前="title"として定義された箇所に
+		ページ内容の埋め込みを行う。
+	 -->
+	<ui:define name="title">Create a new book</ui:define>
+
+	<!-- 
+		テンプレートで名前="content"として定義された箇所に
+		ページ内容の埋め込みを行う。
+	 -->
+	<ui:define name="content">
+
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputLabel value="ISBN : " />
+				<h:inputText value="#{bookController.book.isbn}" />
+
+				<h:outputLabel value="Title :" />
+				<h:inputText value="#{bookController.book.title}" />
+
+				<h:outputLabel value="Price : " />
+				<h:inputText value="#{bookController.book.price}" />
+
+				<h:outputLabel value="Description  : " />
+				<h:inputTextarea value="#{bookController.book.description}"
+					cols="20" rows="5" />
+
+				<h:outputLabel value="Number of pages : " />
+				<h:inputText value="#{bookController.book.nbOfPage}" />
+
+				<h:outputLabel value="Illustrations : " />
+				<h:selectBooleanCheckbox
+					value="#{bookController.book.illustrations}" />
+			</h:panelGrid>
+
+			<h:commandButton value="Create a book"
+				action="#{bookController.doCreateBook}" />
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+</html>

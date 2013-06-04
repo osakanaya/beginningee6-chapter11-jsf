@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- 
+	JavaScriptを使用してページ内での画面制御に関して動的なふるまい
+	を満たせた書籍情報入力ページ。
+	
+	<script type="text/javascript">タグを使用してJavaScriptコードを
+	記述している。
+	
+	ここではPriceテキスト入力欄が空の状態で、フォーカスを移動しよう
+	とすると、隣に入力を促すメッセージが表示されるようになっている。
+		
+	ここではJavaScriptコードをページ内に埋め込んでいるが、別のファイルに
+	JavaScriptコードを記述し、そのファイルをページにインポートして使用
+	こともできる。
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Creates a new book</title>
+
+    <!-- 
+    	Price入力フィールドに入力があることを検証するJavaScriptコード。
+    	この検証は、Price入力フィールドのテキストボックスからフォーカスが
+    	外れた時に実行される。
+    	
+		ここではidが"price"であるinputタグ（テキストボックス）に入力が
+		無い場合、このタグの隣にあるidが"priceError"であるspanタグに
+		エラーメッセージの文字列が挿入される。
+		
+		・document.getElementById(ID)を実行することにより特定のIDを持つ
+		　タグ（DOM要素）をオブジェクトとして取得することができる。
+		　→document.getElementById("price")ではinputタグが取得される
+		　→document.getElementById("priceError")ではspanタグが取得される
+		・入力フィールドの場合、取得したオブジェクトのvalueプロパティには
+		　そのフィールドの入力値が設定されている。
+		・divやspanなどの子要素を持つことができるタグのinnerHTMLプロパティ
+		　に文字列を設定すると、その文字列がタグの子要素として埋め込まれる。
+     -->
+    <script type="text/javascript">
+        function priceRequired() {
+            if (document.getElementById("price").value == "") {
+                document.getElementById("priceError").innerHTML = "Please, fill the price !";
+            }
+        }
+    </script>
+
+</head>
+<body>
+<h1>Creates a new book</h1>
+<hr/>
+<table border="0">
+    <tr>
+        <td>ISBN :</td>
+        <td><input type="text"/></td>
+    </tr>
+    <tr>
+        <td>Title :</td>
+        <td><input type="text"/></td>
+    </tr>
+    <tr>
+        <td>Price :</td>
+        <!-- 
+        	onblur属性に"javascript:priceRequired()"を指定。
+        	フォーカスを失うタイミングで指定のJavaScriprt関数が実行される
+         -->
+        <td><input id="price" type="text" onblur="javascript:priceRequired()"/>
+        	<!--  
+        		このテキストボックスに入力が無いままフォーカスが外れると、
+        		spanタグにエラーメッセージの文字列が挿入される。
+        		（ブラウザでは動的に表示されたように見える）
+        	 -->
+            <span id="priceError"/>
+        </td>
+    </tr>
+    <tr>
+        <td>Description :</td>
+        <td><textarea name="textarea" cols="20" rows="5"></textarea></td>
+    </tr>
+    <tr>
+        <td>Number of pages :</td>
+        <td><input type="text"/></td>
+    </tr>
+    <tr>
+        <td>Illustrations :</td>
+        <td><input type="checkbox"/></td>
+    </tr>
+</table>
+<input name="" type="submit" value="Create"/>
+<hr/>
+<i>APress - Beginning Java EE 6</i>
+</body>
+</html>

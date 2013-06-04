@@ -1,0 +1,49 @@
+<!-- 
+	HTMLで記述した書籍情報入力ページのサンプル。
+	
+	このHTML文書は、以下の理由から正しくないHTML文書と
+	見なされる。
+
+	・<html>タグ、<head>タグ、<body>タグがない。
+	・開始タグに対応する終了タグが無いものがある。
+	・大文字と小文字のタグが混在。（小文字で記述すべき）
+	
+	多くのブラウザはこのような問題を許容して、ある程度
+	正しく表示してくれるようにはなっているが、正しい
+	HTML文書となるようにページを記述すべきである。
+-->
+<!-- <html>タグ、<head>タグ、<body>タグがない -->
+<H1>Creates a new book</h1>
+<hr>
+<!-- 属性の値がダブルクォートで囲まれていない -->
+<TABLE border=0>
+    <TR>
+        <TD>ISBN :</TD>
+        <TD><input type=text/></td>
+    </tr>
+    <tr>
+    	<!-- 大文字<TD>と小文字<td>が混在 -->
+        <td>Title :</td>
+        <TD><input type=text/></td>
+    </tr>
+    <tr>
+        <td>Price :
+        <TD><input type=text/>
+    </tr>
+    <tr>
+        <td>Description :
+        <td><textarea name=textarea cols=20 rows=5></textarea>
+    </tr>
+    <TR>
+        <TD>Number of pages :
+        <td><input type=text/>
+    </tr>
+    <tr>
+        <td>Illustrations :
+        <td><input type="checkbox"/>
+    </tr>
+</table>
+<!-- <input>タグに終了タグがない -->
+<input type=submit value=Create>
+<hr>
+<i>APress - Beginning Java EE 6</i>        

@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- 
+	複合コンポーネントを使用したCD情報の作成ページ。
+ -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ago="http://java.sun.com/jsf/composite/apress">
+      <!-- 
+		まず、htmlタグのXML名前空間宣言で、複合コンポーネントの名前空間を
+		宣言する。
+	
+      	apress というライブラリを宣言し、XML名前空間にagoを指定。      	
+      	複合コンポーネントを含む webapp/resources/apress/newItem.xhtml 
+      	ファイルが参照されるようになる。
+      	（詳細な解説は、newItem.xhtmlのコメントを参照のこと）
+       -->
+<h:head>
+    <title>Creates a new CD</title>
+</h:head>
+<h:body>
+    <h1>Create a new CD - ex03</h1>
+    <hr/>
+    <h:form>
+        <table border="0">
+
+        	<!--
+        		複合コンポーネントを使用することによって、Title,Price,
+        		Descriptionの入力フォームを表示する。
+        		
+        		複合コンポーネントnewItemのitem属性にCDController
+        		マネージドBeanで管理されているCDエンティティ
+        		（#{cDController.cd}）を設定することで、コンポーネントに
+        		含まれる入力フィールドの入力値とマネージドBeanのCDエンティティの
+        		フィールド値を紐づけるようにしている。
+        	 -->
+            <ago:newItem item="#{cDController.cd}"/>
+
+			<!-- 以下はCD情報固有の情報の入力フィールドの表示 -->
+			
+            <tr>
+                <td>
+                    <h:outputLabel value="Music company : "/>
+                </td>
+                <td>
+                    <h:inputText value="#{cDController.cd.musicCompany}"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <h:outputLabel value="Number of CDs : "/>
+                </td>
+                <td>
+                    <h:inputText value="#{cDController.cd.numberOfCDs}"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <h:outputLabel value="Total duration : "/>
+                </td>
+                <td>
+                    <h:inputText value="#{cDController.cd.totalDuration}"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <h:outputLabel value="Gender : "/>
+                </td>
+                <td>
+                    <h:inputText value="#{cDController.cd.gender}"/>
+                </td>
+            </tr>
+
+        </table>
+
+        <h:commandButton value="Create a cd" action="#{cDController.doCreateCD}"/>
+
+    </h:form>
+    <hr/>
+    <i>APress - Beginning Java EE 6</i>
+
+</h:body>
+</html>

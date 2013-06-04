@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- 
+	HTML4.01仕様に準拠したXML文書であるXHTML文書として作成した
+	書籍情報入力ページのサンプル。
+
+	有効な（正しい）XHTML文書とするためには、以下の条件を満たしている
+	必要がある。
+	
+	・<html>タグ、<head>タグ、<body>タグがある。
+	・終了タグが必ず存在する。
+	・要素が無いタグでも必ず終了タグを付ける。
+	　（例：<hr> → <hr><hr/> または <hr/>
+	・属性の値は全てダブルクォートまたはシングルクォートで囲まれている。
+	・すべてのタグが小文字で記述されている。
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Creates a new book</title>
+</head>
+<body>
+<h1>Creates a new book</h1>
+<!-- 子の要素がないタグでも終了タグを付ける -->
+<hr/>
+<!-- 属性の値をダブルクォートで囲む -->
+<table border="0">
+    <tr>
+        <td>ISBN :</td>
+        <td><input type="text"/></td>
+    </tr>
+    <tr>
+        <td>Title :</td>
+        <td><input type="text"/></td>
+    </tr>
+    <tr>
+        <td>Price :</td>
+        <td><input type="text"/></td>
+    </tr>
+    <tr>
+        <td>Description :</td>
+        <td><textarea name="textarea" cols="20" rows="5"></textarea></td>
+    </tr>
+    <tr>
+        <td>Number of pages :</td>
+        <td><input type="text"/></td>
+    </tr>
+    <tr>
+        <td>Illustrations :</td>
+        <td><input type="checkbox"/></td>
+    </tr>
+</table>
+<input name="" type="submit" value="Create"/>
+<hr/>
+<i>APress - Beginning Java EE 6</i>
+
+</body>
+</html>

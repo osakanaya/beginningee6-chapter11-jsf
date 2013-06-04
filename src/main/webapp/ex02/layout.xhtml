@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- 
+	Faceletテンプレートのサンプル。
+
+	このXHTMLファイルは、使用されるテンプレートを定義したものに
+	なっている。
+
+	※newBook.xhtmlでこのテンプレートが使用されている。
+	
+	大まかなページのデザインやレイアウトをテンプレート
+	によって定義しておき、テンプレートを使用する側の
+	XHTMLページでは、このテンプレートが指定された
+	ui:compositionタグを使用してテンプレートに書かれた
+	HTML構造を埋め込むことができる。
+	
+	テンプレートでui:insertタグを用いることで、
+	任意のHTML構造をテンプレートを使用する側のXHTML
+	ページから埋め込むことのできる場所を提供する
+	ことができる。
+	
+	これに対し、テンプレートを使用する側では、
+	ui:defineタグを用いてui:insertタグの場所に
+	実際に埋め込むHTML構造を指定するようになっている。
+ -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xml:lang="en" lang="en">
+
+<head>
+    <title>
+    	<!-- 
+    		テンプレートを使用する側で任意のHTML構造を
+    		埋め込むことができる場所を定義する。
+    		
+    		テンプレートを使用する側から埋め込みの指定が
+    		無い場合は、ui:insertタグの中身が変わりに
+    		使用される。
+    	-->
+        <ui:insert name="title">Default title</ui:insert>
+    </title>
+</head>
+<body>
+<h1>
+	<!-- テンプレートを使用する側で任意のHTML構造を埋め込むことができる場所 -->
+    <ui:insert name="title">Default title</ui:insert>
+</h1>
+<hr/>
+
+<!-- テンプレートを使用する側で任意のHTML構造を埋め込むことができる場所 -->
+<ui:insert name="content">Default content</ui:insert>
+
+<hr/>
+<i>APress - Beginning Java EE 6</i>
+
+</body>
+</html>

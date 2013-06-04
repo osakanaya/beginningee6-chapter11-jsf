@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <title>List of the cds</title>
+</h:head>
+<h:body>
+ 	<!-- 
+		登録済みのCD情報の一覧を表示するXHTMLページ
+	 -->
+    <h1>List of the cds</h1>
+    <hr/>
+    <h:dataTable value="#{cDController.cdList}" var="cd" border="1">
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Title"/>
+            </f:facet>
+             <h:outputText value="#{cd.title}"/>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Price"/>
+            </f:facet>
+            <h:outputText value="#{cd.price}"/>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Description"/>
+            </f:facet>
+            <h:outputText value="#{cd.description}"/>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Music Company"/>
+            </f:facet>
+            <h:outputText value="#{cd.musicCompany}"/>
+        </h:column>
+
+       <h:column>
+            <f:facet name="header">
+                <h:outputText value="Number of CDs"/>
+            </f:facet>
+            <h:outputText value="#{cd.numberOfCDs}"/>
+        </h:column>
+
+       <h:column>
+            <f:facet name="header">
+                <h:outputText value="Total Duration"/>
+            </f:facet>
+            <h:outputText value="#{cd.totalDuration}"/>
+        </h:column>
+
+       <h:column>
+            <f:facet name="header">
+                <h:outputText value="Gender"/>
+            </f:facet>
+            <h:outputText value="#{cd.gender}"/>
+        </h:column>
+
+    </h:dataTable>
+    <h:form>
+        <h:link outcome="newCD.xhtml" value="Create a new cd"/>
+    </h:form>
+    <hr/>
+    <i>APress - Beginning Java EE 6</i>
+</h:body>
+</html>

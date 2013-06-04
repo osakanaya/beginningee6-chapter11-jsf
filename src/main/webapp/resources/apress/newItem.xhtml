@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- 
+
+	複合コンポーネントを定義したXHTMLページのサンプル。
+	
+	サンプルでは、書籍情報の登録とCD情報の登録を行うWebアプリケーションを
+	作成しているが、Bookエンティティとして登録される書籍情報とCDエンティティ
+	として登録されるCD情報では、title,price,descriptionという3つのプロパティ
+	が共通して存在している。
+	
+	そこで、これらの3つのプロパティに対応する入力フォームをこの複合コンポーネント
+	として定義し、書籍登録ページ（newBook.xhtml）とCD登録ページ（newCD.xhtml）で
+	この複合コンポーネントを共通的に再利用できるような形にしている。
+	
+	この複合コンポーネントのXHTMLファイルは、webapp/resources/(コンポーネント名)
+	フォルダに配置する。
+	
+	また、複合コンポーネントを利用するXHTMLファイルでは、ページ冒頭のXML名前空間の
+	指定で、以下のようなXML名前空間を宣言する必要がある。
+	
+	<html xmlns:(名前空間)="http://java.sun.com/jsf/composite/(コンポーネント名)>
+	
+	このようにXML名前空間を指定した場合、このXHTMLページでは、
+	
+	<(名前空間):(複合コンポーネントのXHTMLファイル名)>
+	
+	というタグ名で複合コンポーネントを利用することができる。
+	
+	【例】
+	・この複合コンポーネントをnewItem.xhtmlというファイル名で保存する。
+	・newItem.xhtmlをwebapp/resources/apressフォルダに配置する。
+	・複合コンポーネントを利用するXHTMLページで、以下のようにXML名前空間を宣言する。
+
+		<html xmlns:ago="http://java.sun.com/jsf/composite/apress>
+		
+	このようにすると、複合コンポーネントを利用するXHTMLページでは、<ago:newItem>
+	というタグで複合コンポーネントを利用することができるようになる。
+	
+ -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:composite="http://java.sun.com/jsf/composite">
+
+<!-- 
+	複合コンポーネントのコントラクト（インタフェース）の定義を行うタグ。
+
+	複合コンポーネントに属性を定義することで、複合コンポーネントを
+	利用するページ側からパラメータとして値を引き渡すことができる。
+	
+	ここでは、情報を登録するBookエンティティまたはCDエンティティとして
+	利用するitem属性とtrタグのCSSスタイルとして利用するstyle属性の2つを
+	定義している。
+	
+	また、required属性により、複合コンポーネント利用時のパラメータの引き渡し
+	が必須であるかどうかを指定することができる。
+ -->
+<composite:interface>
+	<!-- コンポーネント属性の定義 -->
+    <composite:attribute name="item" required="true"/>
+    <composite:attribute name="style" required="false"/>
+</composite:interface>
+
+<!-- 
+	コンポーネント実装を定義するタグ。
+	
+	コンポーネントを構成するHTML構造を記述する。
+ -->
+<composite:implementation>
+
+	<!-- 
+		コンポーネント属性"style"に値（CSSスタイル）が引き渡されていれば、
+		その値でtrタグのスタイルを設定する
+
+		複合コンポーネントの属性に引き渡された値を参照するには、
+		
+		#{cc.attrs.(属性名)}
+		
+		とする。
+	-->
+    <tr style="#{cc.attrs.style}">
+        <td>Title :</td>
+        <td>
+        	<!-- 
+        		Title欄の入力値と、item属性に引き渡されたBookエンティティ
+        		またはCDエンティティのtitleプロパティを関連付ける
+        		（item属性に引き渡すBook/CDエンティティは、マネージドBeanの
+        		プロパティとしてアクセス可能とすることを暗黙的に意味している。
+        	 -->
+            <h:inputText value="#{cc.attrs.item.title}"/>
+        </td>
+    </tr>
+    
+    <!-- 以下同様 -->
+
+	<!-- スタイルの設定  -->
+    <tr style="#{cc.attrs.style}">
+        <td>Price :</td>
+        <td>
+        	<!-- 
+        		Price欄の入力値と、item属性に引き渡されたBookエンティティ
+        		またはCDエンティティのpriceプロパティを関連付ける
+        	-->
+            <h:inputText value="#{cc.attrs.item.price}"/>
+        </td>
+    </tr>
+
+	<!-- スタイルの設定  -->
+    <tr style="#{cc.attrs.style}">
+        <td>Description :</td>
+        <td>
+        	<!-- 
+        		Description欄の入力値と、item属性に引き渡されたBookエンティティ
+        		またはCDエンティティのdescriptionプロパティを関連付ける
+        	-->
+            <h:inputTextarea value="#{cc.attrs.item.description}" cols="20" rows="5"/>
+        </td>
+    </tr>
+    
+</composite:implementation>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- 
+	CSSを使用してページに表示される文字などのスタイルを設定した
+	書籍情報入力ページのサンプル。
+	
+	<style type="text/css">タグを使用してCSSスタイルを定義し、色、
+	フォントやレイアウト等のページデザインを行うことができる。
+	
+	ここではCSS定義をページ内に埋め込んでいるが、別のファイルに
+	CSS定義を記述し、そのファイルをページにインポートして使用する
+	こともできる。
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Creates a new book</title>
+    <!-- 
+    	CSSスタイル定義。
+    	
+    	１．bodyタグ内で表示される文字のフォント（font-family）を全体的に指定。
+    	２．tableタグで表示される表の囲み枠の線幅（border）を0に指定。
+    	　　（つまり、囲みわくを表示しない）
+    	３．h1タグでは、フォントサイズ：22px（font-size）、青色（color）、
+    	　　斜体（font-style）で文字を表示する。
+    	４．class属性が"row"であるタグで表示される文字を斜体（font-style）で表示する。
+     -->
+    <style type="text/css">
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        table {
+            border: 0;
+        }
+
+        h1 {
+            font-size: 22px;
+            color: blue;
+            font-style: italic;
+        }
+
+        .row {
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<!-- １の定義が適用される -->
+<body>
+
+<h1>Creates a new book</h1>	<!-- １と３の定義が適用される -->
+
+<hr/>
+
+<!-- １と２の定義が適用される -->
+<table>
+    <tr>
+        <td class="row">ISBN :</td>	<!-- １と２と４の定義が適用される -->
+        <td><input type="text"/></td>
+    </tr>
+    <tr>
+        <td class="row">Title :</td>
+        <td><input type="text"/></td>
+    </tr>
+    <tr>
+        <td class="row">Price :</td>
+        <td><input type="text"/></td>
+    </tr>
+    <tr>
+        <td class="row">Description :</td>
+        <td><textarea name="textarea" cols="20" rows="5"></textarea></td>
+    </tr>
+    <tr>
+        <td class="row">Number of pages :</td>
+        <td><input type="text"/></td>
+    </tr>
+    <tr>
+        <td class="row">Illustrations :</td>
+        <td><input type="checkbox"/></td>
+    </tr>
+</table>
+<input name="" type="submit" value="Create"/>
+<hr/>
+<i>APress - Beginning Java EE 6</i>
+</body>
+</html>
